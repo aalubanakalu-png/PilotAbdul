@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="mobile-web-app-capable" content="yes">
+  <title>PilotAbdul</title>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Rajdhani:wght@600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- HOME SCREEN -->
+  <div id="home-screen" class="screen active">
+    <div id="home-ui">
+      <div id="home-card">
+        <div id="home-title">PilotAbdul</div>
+        <div id="home-edition">9/11 Edition</div>
+        <div id="home-byline">made by a guy named π</div>
+      </div>
+      <button class="home-btn" onclick="showScreen('scoreboard-screen')">Scoreboard</button>
+      <button class="home-btn home-btn-play" onclick="startGame()">PLAY</button>
+      <button class="home-btn home-btn-icon" onclick="showScreen('settings-screen')">&#9881;</button>
+    </div>
+  </div>
+
+  <!-- SCOREBOARD SCREEN -->
+  <div id="scoreboard-screen" class="screen">
+    <div class="inner-screen">
+      <div class="screen-title">SCOREBOARD</div>
+      <div id="scoreboard-list"></div>
+      <div id="sb-empty">No scores yet.<br>Play to set a record!</div>
+      <button class="back-btn" onclick="showScreen('home-screen')">&#8592; BACK</button>
+    </div>
+  </div>
+
+  <!-- SETTINGS SCREEN -->
+  <div id="settings-screen" class="screen">
+    <div class="inner-screen">
+      <div class="screen-title">SETTINGS</div>
+
+      <div class="setting-group">
+        <div class="setting-label">PLANE SPEED</div>
+        <div class="btn-group" id="speed-group">
+          <button class="sel-btn" onclick="setSetting('speed','low',this)">low</button>
+          <button class="sel-btn sel-active" onclick="setSetting('speed','med',this)">med</button>
+          <button class="sel-btn" onclick="setSetting('speed','high',this)">high</button>
+        </div>
+      </div>
+
+      <div class="setting-group">
+        <div class="setting-label">GAP BETWEEN BUILDINGS</div>
+        <div class="btn-group" id="gap-group">
+          <button class="sel-btn" onclick="setSetting('gap','low',this)">low</button>
+          <button class="sel-btn sel-active" onclick="setSetting('gap','med',this)">med</button>
+          <button class="sel-btn" onclick="setSetting('gap','high',this)">high</button>
+        </div>
+      </div>
+
+      <div class="setting-group">
+        <div class="setting-label">AUDIO</div>
+        <div class="btn-group">
+          <button class="sel-btn audio-on" id="btn-effects" onclick="toggleAudio('effects')">effects</button>
+          <button class="sel-btn audio-on" id="btn-music"   onclick="toggleAudio('music')">music</button>
+        </div>
+      </div>
+
+      <button class="back-btn" onclick="showScreen('home-screen')">&#8592; BACK</button>
+    </div>
+  </div>
+
+  <!-- GAME SCREEN -->
+  <div id="game-screen" class="screen">
+    <div id="game-wrapper">
+      <div id="hud">
+        <span>SCORE: <span id="score-display">0</span></span>
+        <span>BEST: <span id="best-display">0</span></span>
+      </div>
+      <canvas id="c"></canvas>
+      <div id="overlay">
+        <div class="overlay-title" id="overlay-title">READY?</div>
+        <div class="overlay-score" id="overlay-score"></div>
+        <div class="overlay-sub"   id="overlay-sub">TAP / SPACE TO START</div>
+        <div id="gameover-btns">
+          <button class="go-btn go-retry" onclick="retryGame()">&#8635; RETRY</button>
+          <button class="go-btn go-home"  onclick="goHome()">&#8962; HOME</button>
+        </div>
+      </div>
+      <div id="hint">SPACE &middot; CLICK &middot; TAP TO FLAP</div>
+    </div>
+  </div>
+
+  <script src="game.js"></script>
+</body>
+</html>
