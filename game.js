@@ -509,7 +509,7 @@ canvas.addEventListener('touchstart', e => { e.preventDefault(); flap(); }, { pa
 
 // ── Particles ──
 
-function spawnParticles(x, y, color, n = 18) {
+function spawnParticles(x, y, color, n = 18) { return; // disabled
   for (let i = 0; i < n; i++) {
     const angle = (Math.PI * 2 * i) / n + Math.random() * 0.5;
     const spd   = (Math.random() * 5 + 2) * SCALE;
@@ -654,7 +654,6 @@ function drawFrame() {
   drawBg();
   pipes.forEach(p => drawBuilding(p.x, p.topH));
   drawGround();
-  drawParticles();
   drawPlaneOn(ctx, bird.x, bird.y, bird.vy * 0.06); // always visible
   drawExplosion(); // explosion draws on top, grows to cover plane
   if (gameState === 'playing') drawScore();
