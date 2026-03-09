@@ -496,7 +496,6 @@ function flap() {
     loop();
   } else if (gameState === 'playing') {
     bird.vy = flapV();
-    spawnParticles(bird.x, bird.y, '#00f5ff', 6);
   }
 }
 
@@ -713,7 +712,6 @@ function loop(ts = 0) {
       if (score > best) best = score;
       scoreDisplay.textContent = score;
       bestDisplay.textContent  = best;
-      spawnParticles(bird.x, bird.y, '#39ff14', 10);
     }
   });
   pipes = pipes.filter(p => p.x > -PW - 20);
